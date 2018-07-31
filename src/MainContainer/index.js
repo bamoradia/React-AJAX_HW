@@ -13,7 +13,7 @@ class MainContainer extends Component {
 
 
 	render() {
-		return this.props.newsArticles.map((x, i) => <Article news={x} index={i}/>)
+		return this.props.newsArticles.map((x, i) => <Article key={i} news={x} index={i}/>)
 	}
 
 }
