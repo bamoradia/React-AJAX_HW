@@ -47,12 +47,19 @@ class App extends Component {
     })
   }
 
+  logout = () => {
+    this.setState({
+      username: '',
+      loggedIn: false
+    })
+  }
+
   render() {
 
-    console.log(this.state.newsArticles.articles)
+    //console.log(this.state.newsArticles.articles)
     return (
       <div className="App">
-        {(this.state.loggedIn) ? <MainContainer newsArticles={this.state.newsArticles.articles}/> :  <Login login={this.login}/>}
+        {(this.state.loggedIn) ? <MainContainer logout={this.logout} newsArticles={this.state.newsArticles.articles}/> :  <Login login={this.login}/>}
       </div>
     );
   }

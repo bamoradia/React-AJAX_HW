@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './index.css';
+import 'react-bootstrap'
 
 
 class Article extends Component {
@@ -13,10 +14,10 @@ class Article extends Component {
 
 	render() {
 		return(
-			<div>
+			<div className='container'>
 				<a href={this.props.news.url}><h3>{this.props.news.title}</h3></a>
-				<h4>Written By: {this.props.news.author}</h4>
-				<a href={this.props.news.url}><img alt={this.props.news.source.name} src={this.props.news.urlToImage}/></a>
+				<small>Written By: {this.props.news.author}</small><br/>
+				<a href={this.props.news.url}><img className='img-fluid' alt='Responsive image' src={this.props.news.urlToImage}/></a>
 			</div>
 		)
 	}
@@ -24,3 +25,7 @@ class Article extends Component {
 
 
 export default Article
+
+
+
+//{this.props.news.source.name}

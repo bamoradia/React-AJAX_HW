@@ -3,21 +3,16 @@ import Article from '../Article'
 
 
 class MainContainer extends Component {
-	constructor() {
-		super();
-		this.state = {
-
-		}
-	}
-
-
 
 	render() {
-		return this.props.newsArticles.map((x, i) => <Article key={i} news={x} index={i}/>)
-	}
+		return (
+			<div>
+				<button onClick={this.props.logout}>Logout</button><br/>
+				{this.props.newsArticles.map((x, i) => <Article key={i} news={x} index={i}/>)}
+			</div>
+	)}
 
 }
-
 
 
 export default MainContainer
