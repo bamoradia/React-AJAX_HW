@@ -12,7 +12,8 @@ class App extends Component {
     this.state = {
       newsArticles: [],
       username: '',
-      loggedIn: false
+      loggedIn: false, 
+      topics: ['Top Headlines']
     }
   }
 
@@ -40,6 +41,15 @@ class App extends Component {
     });
   }
 
+  addTopic = (topic) => {
+    const topicsArray = this.state.topics;
+    topicsArray.push(topic)
+
+    this.setState({
+      topics: topicsArray
+    })
+  }
+
   login = (username) => {
     this.setState({
       username: username,
@@ -59,7 +69,7 @@ class App extends Component {
     //console.log(this.state.newsArticles.articles)
     return (
       <div className="App">
-        {(this.state.loggedIn) ? <MainContainer logout={this.logout} newsArticles={this.state.newsArticles.articles}/> :  <Login login={this.login}/>}
+        {(this.state.loggedIn) ? <MainContainer logout={this.logout} topics={this.state.topics} newsArticles={this.state.newsArticles.articles}/> :  <Login login={this.login}/>}
       </div>
     );
   }

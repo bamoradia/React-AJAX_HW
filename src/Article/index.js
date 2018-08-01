@@ -17,7 +17,7 @@ class Article extends Component {
 			<div className='container'>
 				<a href={this.props.news.url}><h3>{this.props.news.title}</h3></a>
 				<small>Written By: {this.props.news.author}</small><br/>
-				<a href={this.props.news.url}><img className='img-fluid' alt='Responsive image' src={this.props.news.urlToImage}/></a>
+				<a href={this.props.news.url}><img className='img-fluid' alt={this.props.news.title} src={this.props.news.urlToImage}/></a>
 			</div>
 		)
 	}
