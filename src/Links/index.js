@@ -3,7 +3,9 @@ import React, {Component} from 'react';
 
 class Links extends Component {
 	render() {
-		return 'Links'
+		return (
+			<li>{this.props.link}</li>
+		)
 	}
 }
 

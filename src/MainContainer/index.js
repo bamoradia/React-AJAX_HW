@@ -20,7 +20,9 @@ class MainContainer extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.props.addTopic(this.state.topic)
+		console.log(this.state.topic)
+		console.log(this.props)
+		this.props.addTopic(this.state.topic);
 	}
 
 	render() {
@@ -29,7 +31,7 @@ class MainContainer extends Component {
 				<div className='navBar'>
 					<button onClick={this.props.logout}>Logout</button><br/><br/>
 					<form onSubmit={this.handleSubmit}>
-						<input type='text' name='topic' placeholder='Topic of Interest' value={this.state.topic} onClick={this.handleChange}/>
+						<input type='text' name='topic' placeholder='Topic of Interest' value={this.state.topic} onChange={this.handleChange}/>
 						<button>Add Topic</button>
 					</form><br/>
 				</div>

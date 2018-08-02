@@ -13,14 +13,20 @@ class App extends Component {
       newsArticles: [],
       username: '',
       loggedIn: false, 
-      topics: ['Top Headlines']
+      topics: ['Top Headlines'],
+      currentTopic: 'Top Headlines'
     }
   }
 
   getNews = async () => {
     try {
+      let news;
 
-      const news = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=03cb47382bbe471eb910e746967e4bcc');
+      if(this.state.currentTopic === 'Top Headlines') {
+        news = await fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=03cb47382bbe471eb910e746967e4bcc');
+      } else {
+        news = await fetch(`https://newsapi.org/v2/everything?q=${this.state.currentTopic}&apiKey=03cb47382bbe471eb910e746967e4bcc`)
+      }
       const newsJSON = await news.json();
 
       return newsJSON
@@ -69,7 +75,7 @@ class App extends Component {
     //console.log(this.state.newsArticles.articles)
     return (
       <div className="App">
-        {(this.state.loggedIn) ? <MainContainer logout={this.logout} topics={this.state.topics} newsArticles={this.state.newsArticles.articles}/> :  <Login login={this.login}/>}
+        {(this.state.loggedIn) ? <MainContainer logout={this.logout} topics={this.state.topics} addTopic={this.addTopic} newsArticles={this.state.newsArticles.articles}/> :  <Login login={this.login}/>}
       </div>
     );
   }
