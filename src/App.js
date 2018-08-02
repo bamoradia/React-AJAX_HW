@@ -70,12 +70,27 @@ class App extends Component {
     })
   }
 
+  changeTopic = (topic) => {
+    console.log(topic)
+    this.setState({
+      currentTopic: topic
+    })
+    this.getNews().then((news) => {
+
+      this.setState({
+        newsArticles: news
+      })
+    });
+
+
+  }
+
   render() {
 
     //console.log(this.state.newsArticles.articles)
     return (
       <div className="App">
-        {(this.state.loggedIn) ? <MainContainer logout={this.logout} topics={this.state.topics} addTopic={this.addTopic} newsArticles={this.state.newsArticles.articles}/> :  <Login login={this.login}/>}
+        {(this.state.loggedIn) ? <MainContainer changeTopic={this.changeTopic} logout={this.logout} topics={this.state.topics} addTopic={this.addTopic} newsArticles={this.state.newsArticles.articles}/> :  <Login login={this.login}/>}
       </div>
     );
   }

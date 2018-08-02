@@ -20,10 +20,13 @@ class MainContainer extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.state.topic)
-		console.log(this.props)
 		this.props.addTopic(this.state.topic);
+		this.setState({
+			topic: ''
+		})
 	}
+
+
 
 	render() {
 		return (
@@ -35,12 +38,15 @@ class MainContainer extends Component {
 						<button>Add Topic</button>
 					</form><br/>
 				</div>
+				<div className='leftColumn'>
+					<ul>
+						{this.props.topics.map((x, i) => <Links changeTopic={this.props.changeTopic} key={i} link={x}/>)}
+					</ul>
+				</div>
 				<div className='rightColumn'>
 					{this.props.newsArticles.map((x, i) => <Article key={i} news={x} index={i}/>)}
 				</div>
-				<div className='leftColumn'>
-					{this.props.topics.map((x, i) => <Links key={i} link={x}/>)}
-				</div>
+
 			</div>
 	)}
 

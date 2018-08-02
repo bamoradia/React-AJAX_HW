@@ -2,9 +2,15 @@ import React, {Component} from 'react';
 
 
 class Links extends Component {
+
+	handleClick = (e) => {
+		e.preventDefault();
+		this.props.changeTopic(this.props.link)
+	}
+
 	render() {
 		return (
-			<li>{this.props.link}</li>
+			<li onClick={this.handleClick}><button>{this.props.link}</button></li>
 		)
 	}
 }
